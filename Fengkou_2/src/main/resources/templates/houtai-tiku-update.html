@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:include="houtai-ori::ori-commonheadscript">
+</head>
+<body class="app sidebar-mini">
+<!-- Navbar-->
+
+<div th:replace="houtai-ori::ori-commonhead"></div>
+
+<main class="app-content">
+    <br>
+    <br>
+    <div class="app-title">
+        <div>
+            <h1><i class="fa fa-dashboard"></i> 后台管理</h1>
+            <p>主页数据库管理</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="tile">
+                <!--startprint-->
+                <div class="tile">
+                    <h3 class="tile-title">题库信息改变</h3>
+                    <div class="tile-body">
+                        <form method="post" th:action="@{'/houtai/updatetikufin/'+${tiku.tid}}"
+                              enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label class="control-label">题型</label>
+                                <a th:href="@{'/houtai/update/'+${tiku.tid}}"><strong>展开(修改关联题目)</strong></a>
+                                <a th:href="@{'/houtai/add/'+${tiku.tid}}"><strong>新增(新增题目与之关联)</strong></a>
+                                <input name="tixin" class="form-control" type="text" th:placeholder="${tiku.tixin}">
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="control-label">章节序号</label>
+                                <input name="zhangjieid" class="form-control" type="text" th:value="${tiku.zhangjieid}">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">难度</label>
+                                <input name="nandu" class="form-control" type="text" th:value="${tiku.nandu}">
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <label class="control-label">通过率</label>
+                                <input name="passratio" class="form-control" type="text" th:value="${tiku.passratio}">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">题干信息</label>
+                                <textarea rows="5" name="tiganjianchen" class="form-control" type="text" th:placeholder="${tiku.tiganjianchen}"></textarea>
+                            </div>
+
+                            <hr>
+                            <div class="tile-footer">
+                                <button class="btn btn-primary" type="submit">
+                                    <i class="fa fa-fw fa-lg fa-check-circle"></i>
+                                    <a style="color: white"> 上交/保存详细信息</a>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+
+                </div>
+                <!--endprint-->
+
+
+            </div>
+        </div>
+    </div>
+</main>
+
+<div th:replace="houtai-ori::ori-commonfooter"></div>
+
+</body>
+</html>

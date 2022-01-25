@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:fragment="ori-commonheadscript">
+    <meta charset="UTF-8">
+    <title>后台管理</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Main CSS-->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+    <link rel="stylesheet" th:include="oriHtml::commonheadscript">
+    <!-- Font-icon css-->
+    <link rel="stylesheet" type="text/css"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body class="app sidebar-mini">
+<!-- Navbar-->
+<div th:fragment="ori-commonhead">
+    <header id="header" class="fixed-top" th:include="oriHtml::commonhead"></header>
+    <!-- Sidebar menu-->
+    <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+    <aside class="app-sidebar">
+        <ul class="app-menu">
+            <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i
+                    class="app-menu__icon fa fa-edit"></i><span class="app-menu__label">主页管理</span><i
+                    class="treeview-indicator fa fa-angle-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a class="treeview-item" th:href="@{/houtai/main}"><i class="icon fa fa-circle-o"></i> 章节管理</a></li>
+                    <li><a class="treeview-item" th:href="@{/houtai/hzhb}"><i class="icon fa fa-circle-o"></i> 合作伙伴管理</a></li>
+                </ul>
+            </li>
+            <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i
+                    class="app-menu__icon fa fa-edit"></i><span class="app-menu__label">知识库管理</span><i
+                    class="treeview-indicator fa fa-angle-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a class="treeview-item" th:href="@{/houtai/zhishiku}"><i class="icon fa fa-circle-o"></i> 知识点管理</a></li>
+                    <li><a class="treeview-item" th:href="@{/houtai/zhishitiao}"><i class="icon fa fa-circle-o"></i> 知识条管理</a></li>
+                    <li><a class="treeview-item" th:href="@{/houtai/nonzhishi}"><i class="icon fa fa-circle-o"></i> 非结构知识管理</a></li>
+                </ul>
+            </li>
+            <li><a class="app-menu__item" th:href="@{/houtai/tiku}"><i
+                    class="app-menu__icon fa fa-file-code-o"></i><span
+                    class="app-menu__label">题库管理</span></a></li>
+            <li><a class="app-menu__item" th:href="@{/houtai/luntan}"><i
+                    class="app-menu__icon fa fa-file-code-o"></i><span
+                    class="app-menu__label">论坛管理</span></a></li>
+            <li><a class="app-menu__item" th:href="@{/houtai/user}"><i
+                    class="app-menu__icon fa fa-file-code-o"></i><span
+                    class="app-menu__label">用户管理</span></a></li>
+
+        </ul>
+    </aside>
+</div>
+
+
+<div th:fragment="ori-commonfooter">
+    <!-- Essential javascripts for application to work-->
+    <script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+    <script th:src="@{/js/popper.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/main.js}"></script>
+    <!-- The javascript plugin to display page loading on top-->
+    <script th:src="@{/js/plugins/pace.min.js}"></script>
+    <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+    <footer th:replace="oriHtml::commonfoot"></footer>
+    <!-- Page specific javascripts-->
+    <!-- Data table plugin-->
+    <script type="text/javascript" th:src="@{/js/plugins/jquery.dataTables.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/plugins/dataTables.bootstrap.min.js}"></script>
+    <script type="text/javascript">
+        $('#sampleTable').DataTable();
+    </script>
+    <!-- Google analytics script-->
+    <script type="text/javascript">
+        if (document.location.hostname == 'pratikborsadiya.in') {
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+            ga('create', 'UA-72504830-1', 'auto');
+            ga('send', 'pageview');
+        }
+    </script>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:include="houtai-ori::ori-commonheadscript">
+</head>
+
+<body class="app sidebar-mini">
+<!-- Navbar-->
+
+<div th:replace="houtai-ori::ori-commonhead"></div>
+<main class="app-content">
+    <br>
+    <br>
+    <div class="app-title">
+        <div>
+            <h1><i class="fa fa-dashboard"></i> 后台管理</h1>
+            <p>知识条管理</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="tile">
+
+                <!--startprint-->
+                <div class="tile">
+                    <div class="tile-body">
+
+                        <div class="table-responsive">
+                            <table class="table table-hover table-bordered" id="sampleTable">
+                                <thead>
+                                <tr>
+                                    <th>知识条id</th>
+                                    <th>知识条</th>
+                                    <th>父序号id</th>
+                                    <th>章节id</th>
+                                    <th>删除</th>
+                                    <th>修改</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                <tr th:each="each:${tiku}">
+                                    <td th:text="${each.id}"></td>
+                                    <td th:text="${each.miaoshu}"></td>
+                                    <td th:text="${each.parentid}"></td>
+                                    <td th:text="${each.zhangjieid}"></td>
+                                    <td><a th:href="@{'/houtai/delzhishitiao/'+${each.id}}">删除</a></td>
+                                    <td><a th:href="@{'/houtai/updatezhishitiao/'+${each.id}}">修改</a></td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!--endprint-->
+                <div>
+                    <a th:href="@{/houtai/addzhishitiao}" class="btn btn-primary icon-btn col-1">增加</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</main>
+<!-- Essential javascripts for application to work-->
+<div th:replace="houtai-ori::ori-commonfooter"></div>
+</body>
+</html>

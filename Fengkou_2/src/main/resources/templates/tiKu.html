@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>题库</title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Main CSS-->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+    <!-- Font-icon css-->
+    <link rel="stylesheet" type="text/css"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" th:include="oriHtml::commonheadscript">
+</head>
+
+<body>
+<header id="header" class="fixed-top" th:include="oriHtml::commonhead"></header>
+
+
+<br>
+<div class="container-fluid" >
+    <div class="row">
+        <div class="col-lg-10">
+            <main class="app-content">
+                <div>
+                    <div>
+                        <h1><i class="fa fa-th-list"></i> 题库</h1>
+                        <p>刷穿封扣，剑指offer</p>
+                        <h4 style="color:red;" th:if="${message} != null" th:text="${message}"></h4>
+                        <hr>
+                    </div>
+
+                </div>
+                <div class="tile">
+                    <div class="tile-body">
+
+                        <div class="table-responsive">
+                            <table class="table table-hover table-bordered" id="sampleTable">
+                                <thead>
+                                <tr>
+                                    <th>序号</th>
+                                    <th>章节</th>
+                                    <th style="width: 450px">题目</th>
+                                    <th>题型</th>
+                                    <th>通过率</th>
+                                    <th>难度</th>
+                                    <th>题目入口</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                <tr th:each="timu:${tiku}">
+
+                                    <td th:text="${timuStat.count}"></td>
+                                    <td th:text="${timu.zhang}+'.'+${timu.jie}"></td>
+                                    <td th:text="${timu.tiGanjianchen}"></td>
+                                    <td th:if="${timu.tiXin==0}">判断题</td>
+                                    <td th:if="${timu.tiXin==1}">选择题</td>
+                                    <td th:if="${timu.tiXin==2}">填空/问答题</td>
+                                    <td th:if="${timu.tiXin==3}">分析题</td>
+                                    <td th:text="${timu.passRatio}"></td>
+                                    <td th:text="${timu.nandu}+'级'"></td>
+
+                                    <td><a th:href="@{'/singletimu/'+${timu.tid}}">点击进入</a></td>
+
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+        <div class="col-md-2">
+            <br>
+            <br>
+            <br>
+            <div class="col-12">
+                <h5 style="text-align:center">外链搜索</h5>
+                <br>
+                <form method="post" th:action="@{/get}">
+                    <div class="form-group row">
+
+                        <input name="choice" class="form-control col-9" placeholder="关键字搜索">
+
+                        <button class="btn btn-primary icon-btn col-2 "><i class="fa fa-sign-in fa-lg fa-fw"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <hr>
+            <div class="timeline-post" th:if="${lr != null}">
+                <div class="post-media" th:each="req:${lr}">
+                    <div class="content">
+                        <p class="text-muted">
+                            <h5><small th:text="'文献'+${reqStat.count}"></small></h5>
+                            <a th:href="@{${req.href}}">
+                                <strong th:text="${req.title}"></strong>
+                            </a>
+                        </p>
+                        <div class="post-content">
+                            <small><p th:text="${req.describe}"></p></small>
+                            <a th:href="@{${req.pdf}}" th:text="'[pdf]'+${req.pdf}"></a>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+<footer th:replace="oriHtml::commonfoot"></footer>
+<!-- Essential javascripts for application to work-->
+<script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+<script th:src="@{/js/popper.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/main.js}"></script>
+<!-- The javascript plugin to display page loading on top-->
+<script th:src="@{/js/plugins/pace.min.js}"></script>
+<!-- Page specific javascripts-->
+<!-- Data table plugin-->
+<script type="text/javascript" th:src="@{/js/plugins/jquery.dataTables.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/plugins/dataTables.bootstrap.min.js}"></script>
+<script type="text/javascript">
+    $('#sampleTable').DataTable();
+</script>
+<!-- Google analytics script-->
+<script type="text/javascript">
+    if (document.location.hostname == 'pratikborsadiya.in') {
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-72504830-1', 'auto');
+        ga('send', 'pageview');
+    }
+</script>
+<div th:include="oriHtml::commonfootscript"></div>
+</body>
+
+</html>

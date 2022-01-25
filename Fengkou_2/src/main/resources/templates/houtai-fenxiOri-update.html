@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:include="houtai-ori::ori-commonheadscript">
+</head>
+<body class="app sidebar-mini">
+<!-- Navbar-->
+
+<div th:replace="houtai-ori::ori-commonhead"></div>
+
+<main class="app-content">
+    <br>
+    <br>
+    <div class="app-title">
+        <div>
+            <h1><i class="fa fa-dashboard"></i> 后台管理</h1>
+            <p>题库管理</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="tile">
+                <!--startprint-->
+                <div class="tile">
+                    <h3 class="tile-title">题库信息改变</h3>
+                    <div class="tile-body">
+                        <form method="post" th:action="@{'/houtai/updatefenxifin/'+${tiku.Tikuid}}"
+                              enctype="multipart/form-data">
+                            <div class="form-group">
+                                <img th:src="@{${tiku.pic}}" style="width: 500px">
+                                <label class="control-label">题目图片</label>
+                                <input class="form-control" type="file" name="pic">
+                            </div>
+
+                            <br>
+                            <div class="form-group">
+                                <label class="control-label">答案</label>
+                                <input name="ans" class="form-control" type="text" th:value="${tiku.ans}">
+                            </div>
+
+                            <hr>
+                            <div class="tile-footer">
+                                <button class="btn btn-primary" type="submit">
+                                    <i class="fa fa-fw fa-lg fa-check-circle"></i>
+                                    <a style="color: white"> 上交/保存详细信息</a>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+
+                </div>
+                <!--endprint-->
+
+
+            </div>
+        </div>
+    </div>
+</main>
+
+<div th:replace="houtai-ori::ori-commonfooter"></div>
+
+</body>
+</html>

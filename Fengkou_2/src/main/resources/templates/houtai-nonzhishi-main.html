@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:include="houtai-ori::ori-commonheadscript">
+</head>
+
+<body class="app sidebar-mini">
+<!-- Navbar-->
+
+<div th:replace="houtai-ori::ori-commonhead"></div>
+<main class="app-content">
+    <br>
+    <br>
+    <div class="app-title">
+        <div>
+            <h1><i class="fa fa-dashboard"></i> 后台管理</h1>
+            <p>非结构知识管理</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="tile">
+
+
+                <!--startprint-->
+                <div class="tile">
+                    <div class="tile-body">
+
+                        <div class="table-responsive">
+                            <table class="table table-hover table-bordered" id="sampleTable">
+                                <thead>
+                                <tr>
+                                    <th>非结构知识id</th>
+                                    <th>发表者</th>
+                                    <th>题目</th>
+                                    <th>知识内容</th>
+                                    <th>删除</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                <tr th:each="each:${nonzhishi}">
+                                    <td th:text="${each.id}"></td>
+                                    <td th:text="${each.auther}"></td>
+                                    <td th:text="${each.title}"></td>
+                                    <td th:text="${each.context.substring(0,200)}"></td>
+                                    <td><a th:href="@{'/houtai/delnonzhishi/'+${each.id}}">删除</a></td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!--endprint-->
+
+            </div>
+        </div>
+    </div>
+</main>
+<!-- Essential javascripts for application to work-->
+<div th:replace="houtai-ori::ori-commonfooter"></div>
+</body>
+</html>

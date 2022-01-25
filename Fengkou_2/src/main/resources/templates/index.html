@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <title>封扣java - index</title>
+    <link rel="stylesheet" th:include="oriHtml::commonheadscript">
+</head>
+
+<body>
+
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top" th:include="oriHtml::commonhead"></header>
+<!-- End #header -->
+
+<!-- ======= Hero Section ======= -->
+<section id="hero">
+    <div class="hero-container">
+        <h1>欢迎来到封扣java学习平台 <small style="color: #ffffff">&nbsp;&nbsp;&nbsp;Welcome to FengkouJava</small></h1>
+        <h2>这是一个致力于帮助您java起飞的平台</h2>
+        <a href="#faq" class="btn-get-started scrollto">猛击此处开始学习</a>
+    </div>
+</section>
+<!-- #hero -->
+
+<main id="main">
+    <!-- ======= Our Portfolio Section ======= -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>java 章节知识点题库</h2>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul id="portfolio-flters">
+                        <li data-filter="*" class="filter-active">全部</li>
+                        <li data-filter=".1">第一章</li>
+                        <li data-filter=".2">第二章</li>
+                        <li data-filter=".3">第三章</li>
+                        <li data-filter=".4">第四章</li>
+                        <li data-filter=".5">第五章</li>
+                        <li data-filter=".6">第六章</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row portfolio-container">
+
+                <div class="col-lg-4 col-md-6 " th:each="each:${zhangjie}"
+                     th:classappend="${each.zhang}">
+                    <div class="portfolio-item">
+                        <img th:src="@{${each.mengmianpath}}" style="width: 100%">
+                        <div class="portfolio-info">
+                            <h3><a th:href="@{${each.path}}" class="venobox"
+                                   th:text="${each.zhang}+'.'+${each.jie}+' '+${each.miaoshu}"></a></h3>
+                            <div>
+                                <a th:href="@{${each.path}}" class="venobox"
+                                   th:attr="title='第'+${each.jie}+'节'"><i
+                                        class="icofont-eye"></i></a>
+                                <a th:href="@{'/tiku/'+${each.zhang}+'/'+${each.jie}}" title="Details"><i
+                                        class="icofont-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+        </div>
+    </section><!-- End Our Portfolio Section -->
+
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services section-bg">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>更多资源</h2>
+                <p>互联时代，学习的主动权掌握在每一个人的手中</p>
+            </div>
+
+            <div class="row" >
+                <div class="col-4" style="text-align: center;" th:each="zb:${zzhb}">
+                    <img th:src="@{${zb.pic}}" style="width: 330px;height: 180px">
+                    <hr>
+                    <a th:href="@{${zb.wailian}}"><h5 th:text="${zb.title}"></h5></a>
+                </div>
+            </div>
+        </div>
+    </section><!-- End Services Section -->
+
+    <!-- ======= Frequently Asked Questions Section ======= -->
+    <section id="faq" class="faq section-bg">
+        <div class="container">
+            <div class="section-title">
+                <h2>关于这个网站</h2>
+            </div>
+            <ul class="faq-list">
+                <li th:each="each:${webq}">
+                    <a  data-toggle="collapse"  th:href="@{'#'+${each.id}}" th:text="${each.question}"><i class="icofont-simple-up"></i></a>
+                    <div class="collapse show" th:id="${each.id}" data-parent=".faq-list">
+                        <p th:text="${each.ans}">
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <!-- End Frequently Asked Questions Section -->
+
+    <!-- ======= Contact Us Section ======= -->
+    <section id="contact" class="contact section-bg">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>联系我们</h2>
+                <p>本网站在不断更新迭代中，若有不当之处请来信斧正</p>
+            </div>
+
+            <div class="row">
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="contact-about">
+                        <h3>Fengkou JAVA</h3>
+                        <p>这是一个在线JAVA学习平台，祝您有所收获，java起飞</p>
+                        <div class="social-links">
+                            <a href="#" class="twitter"><i class="icofont-twitter"></i></a>
+                            <a href="#" class="facebook"><i class="icofont-facebook"></i></a>
+                            <a href="#" class="instagram"><i class="icofont-instagram"></i></a>
+                            <a href="#" class="linkedin"><i class="icofont-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="info">
+                        <div>
+                            <i class="icofont-google-map"></i>
+                            <p>四平路1239号<br>上海市, 中华人民共和国</p>
+                        </div>
+
+                        <div>
+                            <i class="icofont-envelope"></i>
+                            <p>1950003@tongji.edu.cn</p>
+                        </div>
+
+                        <div>
+                            <i class="icofont-phone"></i>
+                            <p>0086-021-66986698</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-5 col-md-12">
+                    <form th:action="@{/sendmail}" method="post" role="form" class="php-email-form">
+                        <div class="form-group">
+                            <input type="text" name="name" class="form-control" id="name" placeholder="您的姓名"
+                                   data-rule="minlen:4" data-msg="Please enter at least 4 chars"/>
+                            <div class="validate"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" name="email" id="email" placeholder="您的邮箱"
+                                   data-rule="email" data-msg="Please enter a valid email"/>
+                            <div class="validate"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="subject" id="subject" placeholder="主题"
+                                   data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject"/>
+                            <div class="validate"></div>
+                        </div>
+                        <div class="form-group">
+                                <textarea class="form-control" name="message" rows="5" data-rule="required"
+                                          data-msg="Please write something for us" placeholder="请输入您的建议"></textarea>
+                            <div class="validate"></div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="loading">加载中</div>
+                            <div class="sent-message">您的意见我们已经收到，谢谢！</div>
+                        </div>
+                        <div>
+                            <button type="submit">点击发送</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Contact Us Section -->
+
+
+</main><!-- End #main -->
+
+
+<a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+<footer th:replace="oriHtml::commonfoot"></footer>
+<div th:include="oriHtml::commonfootscript"></div>
+
+</body>
+
+</html>

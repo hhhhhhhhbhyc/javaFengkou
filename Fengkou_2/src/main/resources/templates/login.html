@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Main CSS-->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+    <!-- Font-icon css-->
+    <link rel="stylesheet" type="text/css"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>登录</title>
+
+</head>
+<body>
+<section class="material-half-bg">
+    <div class="cover"></div>
+</section>
+<section class="login-content">
+    <div class="logo">
+        <h1>Fengkou Java</h1>
+    </div>
+    <div class="login-box" style="padding: 20px">
+        <form th:action="@{/login}" method="post">
+            <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>登录</h3>
+            <div>
+                <h5 th:if="${message} != null" th:text="${message}" style="color: red"></h5>
+            </div>
+            <div class="form-group">
+                <label class="control-label">用户名</label>
+                <input name="username" class="form-control" type="text" placeholder="请输入用户名">
+            </div>
+            <div class="form-group">
+                <label class="control-label">密码</label>
+                <input name="password" class="form-control" type="password" placeholder="请输入密码">
+            </div>
+            <div class="form-group">
+                <div class="utility">
+                    <p class="semibold-text mb-2"><a th:href="@{/forgetpassword}">忘记密码 ?</a></p>
+                    <p class="semibold-text mb-2"><a th:href="@{/register}">我要注册</a></p>
+                </div>
+            </div>
+            <div class="form-group btn-container">
+                <button class="btn btn-primary btn-block"><i class="fa fa-sign-in fa-lg fa-fw"></i>点击登录</button>
+            </div>
+        </form>
+        <form class="forget-form" action="index.html">
+            <h3 class="login-head"><i class="fa fa-lg fa-fw fa-lock"></i>忘记密码 ?</h3>
+            <div class="form-group">
+                <label class="control-label">邮箱</label>
+                <input class="form-control" type="text" placeholder="Email">
+            </div>
+            <div class="form-group btn-container">
+                <button class="btn btn-primary btn-block"><i class="fa fa-unlock fa-lg fa-fw"></i>重整密码</button>
+            </div>
+            <div class="form-group mt-3">
+                <p class="semibold-text mb-0"><a href="#" data-toggle="flip"><i class="fa fa-angle-left fa-fw"></i>回到登录</a>
+                </p>
+            </div>
+        </form>
+    </div>
+</section>
+<!-- Essential javascripts for application to work-->
+<script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+<script th:src="@{/js/popper.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/main.js}"></script>
+<!-- The javascript plugin to display page loading on top-->
+<script th:src="@{/js/plugins/pace.min.js}"></script>
+<script type="text/javascript">
+    // Login Page Flipbox control
+    $('.login-content [data-toggle="flip"]').click(function () {
+        $('.login-box').toggleClass('flipped');
+        return false;
+    });
+</script>
+
+</body>
+</html>

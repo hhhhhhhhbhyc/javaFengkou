@@ -1,0 +1,30 @@
+spring:
+  datasource:
+    username: root
+    password: Tj215283#
+    url: jdbc:mysql://127.0.0.1:3306/fengkou_2?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  thymeleaf:
+    cache: false
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 100MB
+      enabled: true
+
+  mail:
+    username: 1658460876@qq.com
+    password: oyaewabsjjxdchja
+    host: smtp.qq.com
+
+
+
+
+server:
+  port: 8080
+
+
+
+
+
+
